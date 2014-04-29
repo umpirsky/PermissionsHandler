@@ -20,7 +20,7 @@ class Configuration
     public function getWritableDirs()
     {
         if (!isset($this->configuration['writable-dirs'])) {
-            throw new InvalidConfigurationException('The writable-dirs must be specified in composer srbitrary extra data.');
+            throw new InvalidConfigurationException('The writable-dirs must be specified in composer sarbitrary extra data.');
         }
 
         if (!is_array($this->configuration['writable-dirs'])) {
