@@ -25,20 +25,18 @@ class ScriptHandler
                     $permissionsSetter,
                     $command
                 );
-
-                $event->getIO()->write(
-                    sprintf('Setting up permissions using "%s"', $command->getName())
-                );
-
-                return;
             } catch (ProcessFailedException $exception) {
-                // nothing to do
+                continue;
             }
+
+            $event->getIO()->write(
+                sprintf('Setting up permissions using "%s"', $command->getName())
+            );
+
+            return;
         }
 
-        $event->getIO()->write(
-            sprintf('Setting up permissions failed')
-        );
+        $event->getIO()->write('Setting up permissions failed');
     }
 
     /**

@@ -38,4 +38,30 @@ class ConfigurationSpec extends ObjectBehavior
             ->shouldThrow('Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException')
             ->duringGetWritableDirs();
     }
+
+    function it_throws_exception_if_writable_dirs_are_not_array($package)
+    {
+        $package->getExtra()->shouldBeCalled()->willReturn(
+            array(
+                'writable-dirs' => 'string'
+            )
+        );
+
+        $this
+            ->shouldThrow('Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException')
+            ->duringGetWritableDirs();
+    }
+
+    function it_return_writable_dirs($package)
+    {
+        $directories = array(
+            'writable-dirs' => array('dir')
+        );
+
+        $package->getExtra()->shouldBeCalled()->willReturn($directories);
+
+        $this
+            ->getWritableDirs()
+            ->shouldReturn(array('dir'));
+    }
 }
