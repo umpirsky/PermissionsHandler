@@ -5,6 +5,10 @@ php:
     - 5.6
     - hhvm
 
-before_script: composer install --dev
+before_script:
+    - composer self-update
+    - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cp spec/phpspec.yml.dist phpspec.yml; fi;'
+    - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then composer require --dev --no-update henrikbjorn/phpspec-code-coverage:~0.2; fi;'
+    - composer update --dev
 
 script: php bin/phpspec run -f pretty
