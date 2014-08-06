@@ -7,8 +7,7 @@ php:
 
 before_script:
     - composer self-update
-    - sh -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then rm ./phpspec.yml; fi;'
-    - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cp phpspec.yml.dist ./phpspec.yml; fi;'
+    - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cp spec/phpspec.yml.dist phpspec.yml; fi;'
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then composer require --dev --no-update henrikbjorn/phpspec-code-coverage:~0.2; fi;'
     - composer update --dev
 
