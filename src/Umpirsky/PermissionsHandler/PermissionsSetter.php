@@ -24,8 +24,8 @@ abstract class PermissionsSetter implements PermissionsSetterInterface
     protected function runCommand($command, $path)
     {
         $this->runProcess(str_replace(
-            ['%httpduser%', '%path%'],
-            [$this->getHttpdUser(), $path],
+            array('%httpduser%', '%path%'),
+            array($this->getHttpdUser(), $path),
             $command
         ));
     }
