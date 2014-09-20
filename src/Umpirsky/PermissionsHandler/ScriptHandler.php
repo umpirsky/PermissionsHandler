@@ -9,6 +9,11 @@ class ScriptHandler
 {
     public static function setPermissions(CommandEvent $event)
     {
+        if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
+            $event->getIO()->write('No permissions setup is required on Windows.');
+            return;
+        }
+        
         $event->getIO()->write('Setting up permissions.');
 
         try {
