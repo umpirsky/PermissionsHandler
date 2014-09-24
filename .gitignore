@@ -1,4 +1,3 @@
-bin/phpspec
-bin/composer
+/bin
 vendor
 composer.lock
