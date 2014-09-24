@@ -6,9 +6,7 @@ php:
     - 5.6
     - hhvm
 
-before_install:
-    - composer self-update
 install:
-- composer install --dev
+    - composer install
 
 script: php bin/phpspec run -f pretty
