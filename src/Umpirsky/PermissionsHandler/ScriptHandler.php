@@ -10,10 +10,10 @@ class ScriptHandler
     public static function setPermissions(CommandEvent $event)
     {
         if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
-            $event->getIO()->write('No permissions setup is required on Windows.');
+            $event->getIO()->write('<info>No permissions setup is required on Windows.</info>');
             return;
         }
-        
+
         $event->getIO()->write('Setting up permissions.');
 
         try {
@@ -21,6 +21,8 @@ class ScriptHandler
 
             return;
         } catch (ProcessFailedException $setfaclException) {
+            $event->getIO()->write(sprintf('<error>%s</error>', $setfaclException->getMessage()));
+            $event->getIO()->write('<info>Trying chmod...</info>');
         }
 
         try {
@@ -28,9 +30,8 @@ class ScriptHandler
 
             return;
         } catch (ProcessFailedException $chmodException) {
+            $event->getIO()->write(sprintf('<error>%s</error>', $chmodException->getMessage()));
         }
-
-        throw $setfaclException;
     }
 
     public static function setPermissionsSetfacl(CommandEvent $event)
