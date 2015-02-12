@@ -12,7 +12,7 @@ class SetfaclPermissionsSetter extends PermissionsSetter
             throw new PathNotFoundException($path);
         }
 
-        $this->runCommand('setfacl -R -m u:"%httpduser%":rwX -m u:`whoami`:rwX %path%', $path);
-        $this->runCommand('setfacl -dR -m u:"%httpduser%":rwX -m u:`whoami`:rwX %path%', $path);
+        $this->runCommand('setfacl -m u:"%httpduser%":rwX -m u:`whoami`:rwX %path%', $path);
+        $this->runCommand('setfacl -d -m u:"%httpduser%":rwX -m u:`whoami`:rwX %path%', $path);
     }
 }
