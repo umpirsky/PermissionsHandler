@@ -3,13 +3,13 @@
 namespace spec\Umpirsky\PermissionsHandler;
 
 use PhpSpec\ObjectBehavior;
-use Composer\Script\CommandEvent;
+use Composer\Script\Event;
 use Composer\Composer;
 use Composer\Package\PackageInterface;
 
 class ConfigurationSpec extends ObjectBehavior
 {
-    function let(CommandEvent $event, Composer $composer, PackageInterface $package)
+    function let(Event $event, Composer $composer, PackageInterface $package)
     {
         $this->beConstructedWith($event);
 
