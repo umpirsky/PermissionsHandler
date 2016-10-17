@@ -2,14 +2,14 @@
 
 namespace Umpirsky\PermissionsHandler;
 
-use Composer\Script\CommandEvent;
+use Composer\Script\Event;
 use Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException;
 
 class Configuration
 {
     private $configuration;
 
-    public function __construct(CommandEvent $event)
+    public function __construct(Event $event)
     {
         $this->configuration = $event->getComposer()
             ->getPackage()
