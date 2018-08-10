@@ -27,7 +27,7 @@ class ConfigurationSpec extends ObjectBehavior
 
     function it_gets_writable_dirs()
     {
-        $this->getWritableDirs()->shouldReturn(array('app/cache', 'app/logs'));
+        $this->getWritableDirs()->shoulReturn(array('app/cache', 'app/logs'));
     }
 
     function it_throws_exception_if_writable_dirs_are_not_configured($package)
