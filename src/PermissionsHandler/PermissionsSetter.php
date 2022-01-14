@@ -2,8 +2,8 @@
 
 namespace Umpirsky\PermissionsHandler;
 
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 abstract class PermissionsSetter implements PermissionsSetterInterface
 {

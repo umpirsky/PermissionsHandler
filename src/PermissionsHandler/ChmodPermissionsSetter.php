@@ -2,8 +2,7 @@
 
 namespace Umpirsky\PermissionsHandler;
 
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\PathNotFoundException;
+use Umpirsky\PermissionsHandler\Exception\PathNotFoundException;
 
 class ChmodPermissionsSetter extends PermissionsSetter
 {

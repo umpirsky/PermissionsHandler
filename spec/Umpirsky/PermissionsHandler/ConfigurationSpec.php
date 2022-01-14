@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Umpirsky\PermissionsHandler;
+namespace Spec\Umpirsky\PermissionsHandler;
 
-use PhpSpec\ObjectBehavior;
-use Composer\Script\Event;
 use Composer\Composer;
 use Composer\Package\PackageInterface;
+use Composer\Script\Event;
+use PhpSpec\ObjectBehavior;
 
 class ConfigurationSpec extends ObjectBehavior
 {
@@ -22,7 +22,7 @@ class ConfigurationSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Umpirsky\PermissionsHandler\Configuration');
+        $this->shouldHaveType('APP\PermissionsHandler\Configuration');
     }
 
     function it_gets_writable_dirs()
@@ -34,6 +34,6 @@ class ConfigurationSpec extends ObjectBehavior
     {
         $package->getExtra()->shouldBeCalled()->willReturn(array());
 
-        $this->shouldThrow('Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException')->duringGetWritableDirs();
+        $this->shouldThrow('APP\PermissionsHandler\Exception\InvalidConfigurationException')->duringGetWritableDirs();
     }
 }

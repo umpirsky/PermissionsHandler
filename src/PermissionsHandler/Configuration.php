@@ -2,8 +2,8 @@
 
 namespace Umpirsky\PermissionsHandler;
 
-use Composer\Script\Event;
 use Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException;
+use Composer\Script\Event;
 
 class Configuration
 {
