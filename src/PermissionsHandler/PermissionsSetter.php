@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Umpirsky\PermissionsHandler;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -14,23 +16,35 @@ abstract class PermissionsSetter implements PermissionsSetterInterface
         $this->process = $process;
     }
 
-    protected function getHttpdUser()
+    /**
+     * @return string
+     */
+    protected function getHttpdUser(): string
     {
         return $this->runProcess(
             "ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1"
         );
     }
 
+    /**
+     * @param $command
+     * @param $path
+     * @return void
+     */
     protected function runCommand($command, $path)
     {
         $this->runProcess(str_replace(
-            array('%httpduser%', '%path%'),
-            array($this->getHttpdUser(), $path),
+            ['%httpduser%', '%path%'],
+            [$this->getHttpdUser(), $path],
             $command
         ));
     }
 
-    protected function runProcess($commandline)
+    /**
+     * @param $commandline
+     * @return string
+     */
+    protected function runProcess($commandline): string
     {
         if (null === $this->process) {
             $this->process = new Process(null);

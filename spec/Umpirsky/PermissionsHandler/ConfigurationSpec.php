@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Spec\Umpirsky\PermissionsHandler;
 
 use Composer\Composer;
@@ -9,30 +11,30 @@ use PhpSpec\ObjectBehavior;
 
 class ConfigurationSpec extends ObjectBehavior
 {
-    function let(Event $event, Composer $composer, PackageInterface $package)
+    public function let(Event $event, Composer $composer, PackageInterface $package)
     {
         $this->beConstructedWith($event);
 
         $event->getComposer()->shouldBeCalled()->willReturn($composer);
         $composer->getPackage()->shouldBeCalled()->willReturn($package);
         $package->getExtra()->shouldBeCalled()->willReturn(
-            array('writable-dirs' => array('app/cache', 'app/logs'))
+            ['writable-dirs' => ['app/cache', 'app/logs']]
         );
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('APP\PermissionsHandler\Configuration');
     }
 
-    function it_gets_writable_dirs()
+    public function it_gets_writable_dirs()
     {
-        $this->getWritableDirs()->shouldReturn(array('app/cache', 'app/logs'));
+        $this->getWritableDirs()->shouldReturn(['app/cache', 'app/logs']);
     }
 
-    function it_throws_exception_if_writable_dirs_are_not_configured($package)
+    public function it_throws_exception_if_writable_dirs_are_not_configured($package)
     {
-        $package->getExtra()->shouldBeCalled()->willReturn(array());
+        $package->getExtra()->shouldBeCalled()->willReturn([]);
 
         $this->shouldThrow('APP\PermissionsHandler\Exception\InvalidConfigurationException')->duringGetWritableDirs();
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Umpirsky\PermissionsHandler;
 
 use Umpirsky\PermissionsHandler\Exception\InvalidConfigurationException;
@@ -9,15 +11,20 @@ class Configuration
 {
     private $configuration;
 
+    /**
+     * @param Event $event
+     */
     public function __construct(Event $event)
     {
         $this->configuration = $event->getComposer()
             ->getPackage()
-            ->getExtra()
-        ;
+            ->getExtra();
     }
 
-    public function getWritableDirs()
+    /**
+     * @return array
+     */
+    public function getWritableDirs(): array
     {
         if (!isset($this->configuration['writable-dirs'])) {
             throw new InvalidConfigurationException('The writable-dirs must be specified in composer arbitrary extra data.');
