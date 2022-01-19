@@ -1,10 +1,11 @@
 <?php
 
-namespace spec\Umpirsky\PermissionsHandler;
+declare(strict_types=1);
+
+namespace Spec\Umpirsky\PermissionsHandler;
 
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Process\Process;
-use PhpSpec\Exception\Example\FailureException;
 
 class SetfaclPermissionsSetterSpec extends ObjectBehavior
 {
@@ -15,11 +16,11 @@ class SetfaclPermissionsSetterSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Umpirsky\PermissionsHandler\SetfaclPermissionsSetter');
+        $this->shouldHaveType('APP\PermissionsHandler\SetfaclPermissionsSetter');
     }
 
     function it_is_permissions_setter()
     {
-        $this->shouldHaveType('Umpirsky\PermissionsHandler\PermissionsSetterInterface');
+        $this->shouldHaveType('APP\PermissionsHandler\PermissionsSetterInterface');
     }
 }

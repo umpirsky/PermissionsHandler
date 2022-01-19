@@ -1,11 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Umpirsky\PermissionsHandler;
 
 use Umpirsky\PermissionsHandler\Exception\PathNotFoundException;
 
 class SetfaclPermissionsSetter extends PermissionsSetter
 {
+    /**
+     * @param $path
+     * @return void
+     */
     public function setPermissions($path)
     {
         if (!is_dir($path)) {

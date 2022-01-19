@@ -1,7 +1,9 @@
 {
     "name": "umpirsky/composer-permissions-handler",
     "description": "Composer script handling directories permissions by making them writable both by the web server and the command line user.",
-    "keywords": ["permissions handling"],
+    "keywords": [
+        "permissions handling"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,15 +12,18 @@
         }
     ],
     "require": {
-        "php": "^7.2",
-        "symfony/process": "^2.3|^3.0|^4.0|^5.0"
+        "php": "^7.2 || ^8.0",
+        "symfony/process": "^2.3 || ^3.0 || ^4.0 || ^5.0"
     },
     "require-dev": {
-        "composer/composer": "^1.7",
-        "phpspec/phpspec": "^6.0"
+        "composer/composer": "^2.2.4",
+        "phpspec/phpspec": "^7.1"
     },
     "autoload": {
-        "psr-0": { "Umpirsky\\PermissionsHandler": "src" }
+        "psr-4": {
+            "Umpirsky\\": "src",
+            "Spec\\": "spec"
+        }
     },
     "config": {
         "bin-dir": "bin"
