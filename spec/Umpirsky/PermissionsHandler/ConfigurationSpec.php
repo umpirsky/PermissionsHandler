@@ -11,7 +11,7 @@ use PhpSpec\ObjectBehavior;
 
 class ConfigurationSpec extends ObjectBehavior
 {
-    public function let(Event $event, Composer $composer, PackageInterface $package)
+    function let(Event $event, Composer $composer, PackageInterface $package)
     {
         $this->beConstructedWith($event);
 
@@ -22,17 +22,17 @@ class ConfigurationSpec extends ObjectBehavior
         );
     }
 
-    public function it_is_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('APP\PermissionsHandler\Configuration');
     }
 
-    public function it_gets_writable_dirs()
+    function it_gets_writable_dirs()
     {
         $this->getWritableDirs()->shouldReturn(['app/cache', 'app/logs']);
     }
 
-    public function it_throws_exception_if_writable_dirs_are_not_configured($package)
+    function it_throws_exception_if_writable_dirs_are_not_configured($package)
     {
         $package->getExtra()->shouldBeCalled()->willReturn([]);
 

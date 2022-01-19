@@ -11,9 +11,6 @@ class Configuration
 {
     private $configuration;
 
-    /**
-     * @param Event $event
-     */
     public function __construct(Event $event)
     {
         $this->configuration = $event->getComposer()
